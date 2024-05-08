@@ -12,10 +12,6 @@ const authentication = async (email, password) => {
     throw new Error('Usuário não existe!');
   }
 
-  if (user.status === 0) {
-    throw new Error('Usuário inativado!');
-  }
-
   if (!bcrypt.compareSync(password, user.password)) {
     throw new Error('Credenciais incorretas!');
   }
@@ -24,8 +20,6 @@ const authentication = async (email, password) => {
     name: user.name,
     id: user.id,
     email: user.email,
-    access_level: user.accessLevel,
-    companies_id: user.companies_id,
   };
 
   const access_token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -35,13 +29,6 @@ const authentication = async (email, password) => {
   return { auth: true, access_token: access_token, user: payload };
 };
 
-const sessionUser = async (id) => {
-  const user = await usersRepository.findOneBy({ id: id });
-
-  return user;
-};
-
-export const SessionRepository = {
+export const SessionService = {
   authentication,
-  sessionUser,
 };

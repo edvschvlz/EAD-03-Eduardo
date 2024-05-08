@@ -12,14 +12,3 @@ export const authentication = async (request, response) => {
   }
 };
 
-export const sessionUser = async (request, response) => {
-  try {
-    const user = await SessionService.sessionUser(request.user.id);
-
-    delete user.password;
-
-    return response.status(200).send(user);
-  } catch (err) {
-    return response.status(400).send(err.message);
-  }
-};
