@@ -31,3 +31,13 @@ export const getAll = async (request, response) => {
     return response.status(400).send(err.message);
   }
 };
+
+export const remove = async (request, response) => {
+  try {
+    const user = await UsersService.remove(request.params.id);
+
+    return response.status(204).send(user);
+  } catch (err) {
+    return response.status(400).send(err.message);
+  }
+};

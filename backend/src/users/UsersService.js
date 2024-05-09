@@ -51,4 +51,8 @@ const getAll = async () => {
   return await usersRepository.find();
 };
 
-export const UsersService = { register, update, getAll };
+const remove = async (id) => {
+  return await usersRepository.remove({ id: id });
+};
+
+export const UsersService = { register, update, getAll, remove };

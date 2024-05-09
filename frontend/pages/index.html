@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"
+    />
+    <title>CRUD - EAD-03</title>
+  </head>
+  <body>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close">&times;</span>
+        <form id="form" onsubmit="handleChange(event)">
+          <input type="text" id="name" name="name" placeholder="Nome" oninput="disabledBtn()" />
+          <input type="text" id="email" name="email" placeholder="Email" oninput="disabledBtn()" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Senha"
+            oninput="disabledBtn()"
+          />
+          <div id="successAlert" style="display: none">Usuário salvo com sucesso!</div>
+          <div id="errorAlert" style="display: none">Erro ao salvar usuário!</div>
+          <button type="submit" id="btnSave" disabled>Salvar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <button class="add-user" id="add-user">Novo Usuário</button>
+      <button class="logout" id="logout" onclick="logout()">Sair</button>
+    </div>
+    <div class="container-users">
+      <section class="header">
+        <h1>Usuários</h1>
+      </section>
+      <section class="page-content">
+        <table class="table" id="users">
+          <thead>
+            <tr>
+              <th scope="col" class="b text-center">Nome</th>
+              <th scope="col" class="b text-center">Email</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <script src="../js/index.js"></script>
+  </body>
+</html>

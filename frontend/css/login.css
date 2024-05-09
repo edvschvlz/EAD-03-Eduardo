@@ -20,7 +20,7 @@ body {
 input {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 0; 
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -35,6 +35,16 @@ input {
   cursor: pointer;
 }
 
-#btnLogin:hover {
-  background-color: #0056b3;
+#btnLogin:disabled {
+  background-color: #007bfe7f;
+  cursor: auto;
+}
+
+#errorAlert {
+  background-color: rgba(255, 0, 0, 0.84);
+  border: 2px solid red ;
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  color: white;
 }

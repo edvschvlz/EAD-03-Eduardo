@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
     <title>CRUD - EAD-03</title>
   </head>
   <body>
@@ -11,18 +11,18 @@
       <h2>Login</h2>
       <form id="form" onsubmit="handleChange(event)">
         <input type="text" id="email" name="email" placeholder="Email" oninput="disabledBtn()" />
-        <input
+        <input  
           type="password"
           id="password"
           name="password"
           placeholder="Senha"
           oninput="disabledBtn()"
         />
-        <!-- <div id="errorAlert" style="display: none">Erro ao autenticar, tente novamente.</div> -->
-        <!-- <div id="successMessage" style="display: none">Autenticado com sucesso!</div> -->
+        <div id="errorAlert" style="display: none">Erro ao autenticar, tente novamente.</div>
         <button type="submit" id="btnLogin" disabled>Entrar</button>
       </form>
     </div>
-    <script src="index.js"></script>
+
+    <script src="../js/login.js"></script>
   </body>
 </html>

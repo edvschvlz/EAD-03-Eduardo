@@ -1,3 +1,9 @@
+const token = localStorage.getItem('token');
+
+if (token) {
+  window.location.href = './index.html';
+}
+
 function disabledBtn() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
@@ -17,7 +23,6 @@ function handleChange(event) {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const btnLogin = document.querySelector('#btnLogin');
-  const successMessage = document.querySelector('#successMessage');
   const errorAlert = document.querySelector('#errorAlert');
 
   event.preventDefault();
@@ -53,10 +58,9 @@ function handleChange(event) {
       localStorage.setItem('user', JSON.stringify(data.user));
 
       errorAlert.style.display = 'none';
-      successMessage.style.display = 'block';
 
       setTimeout(() => {
-        window.location.href = '/';
+        window.location.href = './index.html';
       }, 400);
     })
     .catch(() => {
