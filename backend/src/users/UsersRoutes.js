@@ -9,6 +9,6 @@ const UsersRouter = Router();
 UsersRouter.patch('/:id', Authentication, update);
 UsersRouter.post('/', Authentication, register);
 UsersRouter.get('/', Authentication, getAll);
-UsersRouter.delete('/', Authentication, remove);
+UsersRouter.delete('/:id', Authentication, remove);
 
 export default UsersRouter;

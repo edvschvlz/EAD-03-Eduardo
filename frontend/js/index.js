@@ -93,12 +93,39 @@ function handleChange(event) {
       btnSave.removeAttribute('disabled');
       errorAlert.style.display = 'none';
       successAlert.style.display = 'block';
+
+      setTimeout(() => {
+        return location.replace(location.href);
+      }, 3000);
     })
     .catch(() => {
       btnSave.removeAttribute('disabled');
       successAlert.style.display = 'none';
       errorAlert.style.display = 'block';
       throw new Error('Não foi possível salvar informações!');
+    });
+}
+
+function remove(id) {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json; charset=UTF-8',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  fetch(`http://localhost:5000/users/${id}`, options)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Não foi possível deletar informação!');
+      }
+
+      return location.replace(location.href);
+    })
+    .catch(() => {
+      throw new Error('Não foi possível deletar informação!');
     });
 }
 
@@ -118,10 +145,23 @@ function handleChange(event) {
     })
     .then((data) => {
       const users = document.querySelector('#users');
-
+      console.log(data);
       new DataTable(users, {
         data: data,
-        columns: [{ data: 'name' }, { data: 'email' }],
+        columns: [
+          { data: 'name' },
+          { data: 'email' },
+          {
+            data: 'null',
+            render: function (data, type, row) {
+              return `
+              <div class="actions">
+                <a style="font-size: 20px; cursor: pointer;" id="${row.id}" onClick="edit(this.id)"><i class="bi bi-pencil-fill"></i></a>
+                <a style="font-size: 20px; cursor: pointer;" id="${row.id}" onClick="remove(this.id)"><i class="bi bi-trash-fill"></i></a>
+              </div>`;
+            },
+          },
+        ],
         columnDefs: [
           {
             className: 'dt-center',
